@@ -1,111 +1,34 @@
-/**********************************************
-*** GENERAL
-**********************************************/
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html {
+    height: 1500px;
 }
-
-.clearfix::after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
 body {
-    color: #555;
-    font-family: Open Sans;
-    font-size: 16px;
-    position: relative;
-    height: 100vh;
-    font-weight: 400;
-    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 100;
 }
-
-.right {
-    float: right;
-}
-.red {
-    color: #ff5049 !important;
-}
-.red-focus:focus {
-    border: 1px solid #ff5049 !important;
-}
-
-/**********************************************
-*** TOP PART
-**********************************************/
-
 .top {
-    height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(back.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.774)), url(top.jpg);
     background-size: cover;
     background-position: center;
-    position: relative;
 }
 
-.budget {
-    position: absolute;
-    width: 350px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-}
-
-.budget__title {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-.budget__value {
-    font-weight: 300;
-    font-size: 46px;
-    text-align: center;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
-}
-
-.budget__income,
+/* .budget__income,
 .budget__expenses {
-    padding: 12px;
-    text-transform: uppercase;
+    margin: auto;
+    width: 50%;
+} */
+.right {
+    float: right !important;
 }
 
-.budget__income {
-    margin-bottom: 10px;
-    background-color: #28b9b5;
+.budget__income--text {
+    background-color: #5b967a;
+    color: darkslategray;
 }
-
-.budget__expenses {
-    background-color: #ff5049;
-}
-
-.budget__income--text,
 .budget__expenses--text {
-    float: left;
-    font-size: 13px;
-    color: #444;
-    margin-top: 2px;
-}
-
-.budget__income--value,
-.budget__expenses--value {
-    letter-spacing: 1px;
-    float: left;
-}
-
-.budget__income--percentage,
-.budget__expenses--percentage {
-    float: left;
-    width: 34px;
-    font-size: 11px;
-    padding: 3px 0;
-    margin-left: 10px;
+    background-color: #ff5049;
+    color: darkslategray;
 }
 
 .budget__expenses--percentage {
@@ -114,24 +37,28 @@ body {
     border-radius: 3px;
 }
 
-/**********************************************
-*** BOTTOM PART
-**********************************************/
+/* bottom */
 
-/***** FORM *****/
-.add {
-    padding: 14px;
-    border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
+.bottom-1 {
+    background-color: rgba(176, 187, 183, 0.479);
 }
 
-.add__container {
-    margin: 0 auto;
-    text-align: center;
+.bottom__first {
+    width: 950px !important;
+    margin: auto !important;
 }
 
+.add__btn {
+    font-size: 30px;
+    /* background: none;
+    border: none; */
+    color: #5b967a;
+    cursor: pointer;
+    /* display: inline-block;
+    vertical-align: middle; */
+    line-height: 1;
+}
 .add__type {
-    width: 55px;
     border: 1px solid #e7e7e7;
     height: 44px;
     font-size: 18px;
@@ -141,7 +68,6 @@ body {
     font-weight: 300;
     transition: border 0.3s;
 }
-
 .add__description,
 .add__value {
     border: 1px solid #e7e7e7;
@@ -155,25 +81,6 @@ body {
     transition: border 0.3s;
 }
 
-.add__description {
-    width: 400px;
-}
-.add__value {
-    width: 100px;
-}
-
-.add__btn {
-    font-size: 35px;
-    background: none;
-    border: none;
-    color: #28b9b5;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1.1;
-    margin-left: 10px;
-}
-
 .add__btn:active {
     transform: translateY(2px);
 }
@@ -181,30 +88,15 @@ body {
 .add__type:focus,
 .add__description:focus,
 .add__value:focus {
-    outline: none;
-    border: 1px solid #28b9b5;
+    outline: none !important;
+    border: 1px solid #5b967a !important;
 }
 
 .add__btn:focus {
-    outline: none;
+    outline: none !important;
 }
 
-/***** LISTS *****/
-.container {
-    width: 1000px;
-    margin: 60px auto;
-}
-
-.income {
-    float: left;
-    width: 475px;
-    margin-right: 50px;
-}
-
-.expenses {
-    float: left;
-    width: 475px;
-}
+/* delete */
 
 h2 {
     text-transform: uppercase;
@@ -307,4 +199,22 @@ h2 {
 }
 .unpaid:hover .item__description {
     font-weight: 900;
+}
+
+.containers {
+    margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .bottom__first {
+        width: auto !important;
+    }
+    .middle {
+        margin: 5px 0 5px 0;
+    }
+    .expenses {
+        margin-top: 20px;
+        border-top: 1px solid rgba(87, 84, 84, 0.274);
+        padding-top: 20px;
+    }
 }
