@@ -158,26 +158,35 @@ var UIController = (function () {
     };
 
     var formatNumber = function (num, type) {
-        var numSplit, int, dec;
-        // + or - before number
-        // exactly 2 decimal points
-        // comma separating the thousands
+        var numSplit, int, dec, type;
+        /*
+            + or - before number
+            exactly 2 decimal points
+            comma separating the thousands
+
+            2310.4567 -> + 2,310.46
+            2000 -> + 2,000.00
+            */
 
         num = Math.abs(num);
-        // toFixed(2) is a method that rounds up numbers to 2 decimal places
         num = num.toFixed(2);
 
         numSplit = num.split('.');
 
-        // adding comma to thousands
         int = numSplit[0];
-        if (int.length > 3) {
-            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, int.length) + '.';
+        dec = numSplit[1];
+        if (int.length < 6 && int.length > 3) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3); //input 23510, output 23,510
+        } else if (int.length > 6) {
+            int =
+                int.substr(0, int.length - 6) +
+                ',' +
+                int.substr(int.length - 3, int.length - 3) +
+                ',' +
+                int.substr(int.length - 3, 3);
         }
 
-        dec = numSplit[1];
-
-        return (type === 'exp' ? (sign = '-') : (sign = '+')) + ' ' + int + dec;
+        return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
     };
 
     return {
